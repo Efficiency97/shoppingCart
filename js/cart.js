@@ -2,19 +2,21 @@ new Vue({
   el: '#app',
   data: {
     totalMoney: 0,
-    productList: []
+    productList: [],
     // checkAllFlag: false,
     // delFlag: false,
     // curProduct: ''
+    //   checkAllFlag:false
   },
   filters: {
-    // formatMoney: function(value) {
-    //   return "¥" + value.toFixed(2);
-    // }
-
+      formatMoney:function (value) {
+          return "￥"+value.toFixed(2)
+      }
   },
   mounted: function() {
-    this.cartView()
+      this.$nextTick(function () {
+          this.cartView()
+      })
     // this.$nextTick(function() {
     //   this.cartView();
     // })
@@ -26,6 +28,40 @@ new Vue({
           _this.productList = res.body.result.list;
           _this.totalMoney =  res.body.result.totalMoney;
         });
+      },
+      changeMoney: function (product,way) {
+          if(way>0){
+              product.productQuantity++;
+          } else{
+              if(product.productQuantity<=1){
+                  product.productQuantity=1;
+              }
+              else{
+                  product.productQuantity--;
+              }
+          }
+      },
+      selectProduct:function (item) {
+          if(typeof item.checked=='undefined'){
+              Vue.set(item,'checked',true);
+              // this.$set(item,'checked','true');
+          } else{
+              item.checked=!item.checked;
+          }
+      },
+      checkAll:function (flag) {
+          //实现全选按钮的toggle功能
+          this.checkAllFlag=flag;
+          //实现产品的全选
+          var _this=this
+          this.productList.forEach(function (item,index) {
+              if(typeof item.checked=='undefined'){
+                  Vue.set(item,'checked',_this.checkAllFlag);
+                  // this.$set(item,'checked','true');
+              } else{
+                  item.checked=flag;
+              }
+          })
       }
       // changeMoney: function(product, way) {
       //   if (way > 0) {
@@ -87,3 +123,6 @@ new Vue({
 // Vue.filter('money', function(value, type) {
 //   return "¥" + value.toFixed(2) + type;
 // })
+Vue.filter("money",function (value,type) {
+    return "￥"+value.toFixed(2)+type
+})
