@@ -1,27 +1,27 @@
-  {
-    "status":1,
-    "result":{
-      "totalMoney":109,
-      "list":[
-        {
-          "productId":"600100002115",
-          "productName":"黄鹤楼香烟",
-          "productPrice":19,
-          "productQuantity":1,
-          "productImage":"static/img/goods-1.jpg",
-          "parts":[
-            {
-              "partsId":"10001",
-              "partsName":"打火机",
-              "imgSrc":"static/img/part-1.jpg"
-            },
-            {
-              "partsId":"10002",
-              "partsName":"打火机",
-              "imgSrc":"static/img/part-1.jpg"
-            }
-          ]
-        },
+{
+  "status":1,
+  "result":{
+    "totalMoney":109,
+    "list":[
+      {
+        "productId":"600100002115",
+        "productName":"黄鹤楼香烟",
+        "productPrice":19,
+        "productQuantity":1,
+        "productImage":"static/img/goods-1.jpg",
+        "parts":[
+          {
+            "partsId":"10001",
+            "partsName":"打火机",
+            "imgSrc":"static/img/part-1.jpg"
+          },
+          {
+            "partsId":"10002",
+            "partsName":"打火机",
+            "imgSrc":"static/img/part-1.jpg"
+          }
+        ]
+      },
       {
         "productId":"600100002120",
         "productName":"加多宝",
